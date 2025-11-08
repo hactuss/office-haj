@@ -1,6 +1,4 @@
-<script lang="js">
-    import { onMount } from "svelte";
-
+<script>
     const options = {
         weekday: "short",
         hours: "2-digit",
@@ -22,10 +20,22 @@
         timeZone: timezoneca,
         options: options,
     });
-
-    let re = setInterval(() => {
-        console.log((timeca = DateVar.getSeconds()));
-    }, 1000);
+    let ms = 1000000;
+    let newtime = "";
+    let timede = $state(0);
+    $effect(() => {
+        setInterval(() => {
+            return (
+                console.log(
+                    DateVar.toLocaleTimeString(undefined, {
+                        timeZone: timezonede,
+                        options: options,
+                    }),
+                ),
+                ms
+            );
+        });
+    });
 </script>
 
 <main class="bg-[rgb(33, 33, 33)]">
@@ -100,7 +110,7 @@
                     </svg>
                 </div>
             </div>
-            <p>Berlin, Germany</p>
+            <p>{newtime}</p>
             <img
                 src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg"
                 alt="Germany-flag"
@@ -206,7 +216,7 @@
                 class="flag"
                 id="flag-canada"
             />
-            <h2 id="CurrentTimeCanada" class="TimeDisplay">{timeca}</h2>
+            <h2 id="CurrentTimeCanada" class="TimeDisplay">CA</h2>
         </div>
         <div class="Time NYC">
             <div class="User_indicator DayIndicator" id="NYC-Day">
