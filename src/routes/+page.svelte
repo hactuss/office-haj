@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Countrycard from '$lib/components/countrycard.svelte';
 
-	export const flaglist = [
+	const flaglist = [
 		'https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg',
 		'https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg',
 		'https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg',
@@ -9,9 +9,10 @@
 		'https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_New_York_City.svg',
 		'https://upload.wikimedia.org/wikipedia/commons/8/85/Flag_of_Los_Angeles%2C_California.svg',
 		'https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg',
-		'https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg'
+		'https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg',
+		'https://upload.wikimedia.org/wikipedia/commons/e/ef/Flag_of_Hawaii.svg'
 	];
-
+	console.log(flaglist.length - 1);
 	const options = {
 		weekday: 'short',
 		hours: '2-digit',
@@ -114,7 +115,8 @@
 		ny = setUTCTime('-', 5),
 		la = setUTCTime('-', 8),
 		fr = setUTCTime('+', 1),
-		ch = setUTCTime('+', 8);
+		ch = setUTCTime('+', 8),
+		hw = setUTCTime('-', 10);
 </script>
 
 <main id="MAIN">
@@ -126,14 +128,18 @@
 	<Countrycard name="los angeles" time={la} location="Los Angeles, USA" flag={flaglist[5]} />
 	<Countrycard name="france" time={fr} location="Paris, France" flag={flaglist[6]} />
 	<Countrycard name="china" time={ch} location="Shanghai, China" flag={flaglist[7]} />
+	<Countrycard name="china" time={hw} location="Honolulu, Hawaii" flag={flaglist[8]} />
 </main>
 
 <hr />
 <!--<a href="./obs-overlay">OBS overlay</a>-->
 
 <footer>
-	<a href="https://hactuss-website.vercel.app">Made with fun by hactuss</a> °°°°°°
-	<a href="https://github.com/hactuss/office-haj">source code</a>
+	°°° <a href="https://hactuss-website.vercel.app">Made with fun by hactuss</a> °°°
+	<a href="https://github.com/hactuss/office-haj">source code</a> °°°
+	<span style:color="rgb(255 0 0 )" style:opacity="0.50"
+		>&#9888; Clock does not update in real time!</span
+	> °°°
 </footer>
 
 <style>
